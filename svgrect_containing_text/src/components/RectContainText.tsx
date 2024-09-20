@@ -41,8 +41,6 @@ export const RectContainText: React.FC<RectContainTextProps> = ({
                         textRef.current.textContent = line;
                         const bb = textRef.current.getBBox();
                         return bb;
-                        //const lineWidth = bb.width;
-                        //return lineWidth <= maxWidth;
                     }
                     return null;
                 }
