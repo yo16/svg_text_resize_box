@@ -93,7 +93,7 @@ export const RectContainText: React.FC<RectContainTextProps> = ({
 
                 // rectのために情報を渡す
                 rectSize = {
-                    width: linesMaxWidth,
+                    width: (linesMaxWidth < minWidth)? minWidth: linesMaxWidth,
                     height: oneLineHeight * lines.length,
                 };
             }
