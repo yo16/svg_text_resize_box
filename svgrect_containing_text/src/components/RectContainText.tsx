@@ -3,7 +3,7 @@
 
 import { useLayoutEffect, useRef } from "react";
 
-export interface RectContainTextProps {
+interface RectContainTextProps {
     text: string;
     fontSize: number;
     x: number;
