@@ -10,7 +10,7 @@ export interface RectContainTextProps {
     y: number;
     minWidth: number;
     maxWidth: number;
-    // サイズの確定後、フィードバックする
+    // サイズの変更後、フィードバックする
     onSetSize: (width: number, height: number) => void;
 }
 export const RectContainText: React.FC<RectContainTextProps> = ({
