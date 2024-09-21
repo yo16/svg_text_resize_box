@@ -7,9 +7,11 @@ function App() {
     const [minWidth, setMinWidth] = useState<number>(100);
     const [maxWidth, setMaxWidth] = useState<number>(400);
     const [usingText, setUsingText] = useState<string>("test1 test2 test3 test4 test5 test6 test7 test8 test9 test10");
+    const [sizeStr, setSizeStr] = useState<string>("");
 
     function handleOnSetSize(width: number, height: number): void {
         console.log(`w:${width}, h:${height}`);
+        setSizeStr(`{width:${width}, height:${height}}`);
     }
 
     // フォントサイズを2ずつ上げたり下げたりする
@@ -23,7 +25,7 @@ function App() {
     // 最小幅を20ずつ上げたり下げたりする
     function handleMinWidthButton(sizeUp: Boolean): void {
         const nextMinWidth = minWidth + (sizeUp? 20: -20);
-        if ((nextMinWidth > 0) && (nextMinWidth < 500) && (nextMinWidth < maxWidth)) {
+        if ((nextMinWidth > 0) && (nextMinWidth <= 500) && (nextMinWidth <= maxWidth)) {
             setMinWidth(nextMinWidth);
         }
     }
@@ -31,7 +33,7 @@ function App() {
     // 最大幅を20ずつ上げたり下げたりする
     function handleMaxWidthButton(sizeUp: Boolean): void {
         const nextMaxWidth = maxWidth + (sizeUp? 20: -20);
-        if ((nextMaxWidth > 0) && (nextMaxWidth < 500)) {
+        if ((nextMaxWidth > 0) && (nextMaxWidth <= 500) && (minWidth <= nextMaxWidth)) {
             setMaxWidth(nextMaxWidth);
         }
     }
@@ -44,7 +46,7 @@ function App() {
     return (
         <>
             <svg
-                width={500}
+                width={520}
                 height={500}
                 style={{backgroundColor: "#ccc", border: "2px solid #999"}}
             >
@@ -166,6 +168,7 @@ function App() {
             fontSize <button onClick={() => handleFontSizeButton(true)}>UP</button> <button onClick={() => handleFontSizeButton(false)}>DOWN</button><br />
             minWidth <button onClick={() => handleMinWidthButton(true)}>UP</button> <button onClick={() => handleMinWidthButton(false)}>DOWN</button><br />
             maxWidth <button onClick={() => handleMaxWidthButton(true)}>UP</button> <button onClick={() => handleMaxWidthButton(false)}>DOWN</button><br />
+            size: {sizeStr}
         </>
     )
 }
